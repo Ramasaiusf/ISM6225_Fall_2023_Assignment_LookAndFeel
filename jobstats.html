@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add your meta tags, title, and CSS links here -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/jobpostings.css"> <!-- Include specific CSS for this page -->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="jobpostings.html">Job Postings</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li><a href="jobstats.html">Job Stats</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+
+
+        <!-- Job Categories Table -->
+        <!--<div class="job-category">
+            <h2>Job Categories</h2>
+            <table id="jobCategoryTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Number of Jobs</th>
+                    </tr>
+                </thead>
+                <tbody>-->
+        <!-- Data will be displayed here -->
+        <!--</tbody>
+            </table>
+            <div class="pagination">
+                <button id="previousPage">Previous Page</button>
+                <button id="nextPage">Next Page</button>
+            </div>
+            <h1></h1>
+            <h1> Job category VS No of Jobs</h1>
+            <div class="bar-chart">
+                <canvas id="jobCategoryChart" width="400" height="200"></canvas>
+            </div>
+        </div>-->
+        <!-- Career Levels Table -->
+        <div class="career-level">
+            <h2>Career Levels</h2>
+            <table id="careerLevelTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>Number of Jobs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be displayed here -->
+                </tbody>
+            </table>
+            <h1></h1>
+            <h1> Career Level VS No of Jobs</h1>
+            <div class="bar-chart">
+                <canvas id="careerLevelChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/jobstats.js"></script> <!-- Include specific JavaScript for this page -->
+    <footer>
+        <p>Copyright &copy; Data Source: <a href="https://data.cityofnewyork.us/City-Government/Jobs-NYC-Postings/kpav-sd4t" target="_blank">Jobs NYC Postings | NYC Open Data (cityofnewyork.us)</a></p>
+    </footer>
+</body>
+</html>
