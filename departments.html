@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add your meta tags, title, and CSS links here -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/jobpostings.css">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="jobpostings.html">Job Postings</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li><a href="jobstats.html">Job Stats</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Departments</h1>
+
+
+        <table id="departmentsTable" class="table">
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Jobs Per department</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be displayed here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            const apiKey = 'RhEpGjjxXIgbBJK1OqavYjI0eH8stPCZ9Ad3I4LT';
+            const apiUrl = 'https://data.cityofnewyork.us/resource/kpav-sd4t.json';
+
+            const departmentsTable = document.getElementById('departmentsTable');
+            const tableBody = departmentsTable.querySelector('tbody');
+
+            function fetchDepartmentsData() {
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Calculate the number of jobs for each agency
+                        const agencyCounts = calculateAgencyCounts(data);
+
+                        // Clear the existing table rows
+                        tableBody.innerHTML = '';
+
+                        // Iterate over agency counts and create table rows
+                        for (const agency in agencyCounts) {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                        <td>${agency}</td>
+                        <td>${agencyCounts[agency]}</td>
+                    `;
+                            tableBody.appendChild(row);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching department data:', error);
+                    });
+            }
+
+            // Calculate the number of jobs for each agency
+            function calculateAgencyCounts(data) {
+                const agencyCounts = {};
+
+                data.forEach(item => {
+                    const agency = item.agency;
+                    if (!agencyCounts[agency]) {
+                        agencyCounts[agency] = 1;
+                    } else {
+                        agencyCounts[agency]++;
+                    }
+                });
+
+                return agencyCounts;
+            }
+
+            // Initial fetch on page load
+            fetchDepartmentsData();
+        });
+
+
+    </script>
+    <footer>
+        <p>Copyright &copy; Data Source: <a href="https://data.cityofnewyork.us/City-Government/Jobs-NYC-Postings/kpav-sd4t" target="_blank">Jobs NYC Postings | NYC Open Data (cityofnewyork.us)</a></p>
+    </footer>
+</body>
+</html>
